@@ -1,2 +1,5 @@
-# web-330
-Enterprise JavaScript II at BUWebDev web-330. 
+#WEB 330 Enterprise JavaScript II
+
+##Contributors
+  *Professor Richard Krasso
+  *Tierre Green
