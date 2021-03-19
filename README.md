@@ -1,5 +1,5 @@
-#WEB 330 Enterprise JavaScript II
+# WEB 330 Enterprise JavaScript II
 
-##Contributors
-*Professor Richard Krasso
-*Tierre Green
+## Contributors
+* Professor Richard Krasso
+* Tierre Green
