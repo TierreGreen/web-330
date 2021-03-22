@@ -7,6 +7,12 @@
 ; Description: web-330 Landing page stylings with theme.css file
 ==============================================
 */
+/**
+* container display settings.
+*/
+#container {
+    display: block;
+}
 
 /**
 * all card stylings including card content and card hovering styling
