@@ -1,0 +1,102 @@
+<!--
+=================================================
+; Title: Assignment 2.2 Palindrome App
+; Author: Professor Richard Krasso
+; Modified By: Tierre Green
+; Date: March 27, 2021
+; Description: Palindrome App for assignment 2.2
+=================================================
+-->
+
+<!DOCTYPE html>
+
+<html lang="en-US">
+
+    <head>
+
+        <META charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <META name="keywords" content="Palindrome">
+
+        <title>WEB 330 - Enterprise JavaScript II</title>
+
+    <!--site.css stylesheet per assignment requirements-->
+        <link href="../site.css" rel="stylesheet">
+
+    <!--assignment css file per instructions.-->
+        <link href="Green-palindrome.css" rel="stylesheet">
+        
+    <!--google fonts stylesheet per course requirements-->
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+
+    </head>
+
+    <body class="light-theme">
+
+    <!--container div per course requirements.-->
+        <div class="container">
+
+        <!--header for title of app-->
+            <h1 class="app-header">Welcome to the Palindrome App!</h1>
+
+        <!--Palindrome Checker card div-->
+            <div class="card">
+                
+            <!--card title div-->
+                <div class="card-title">
+                    Palindrome Checker
+                </div>
+
+            <!--card-content div-->
+                <div class="card-content">
+
+                <!--form div-->
+                    <div class="form">
+
+                    <!--form-field dive-->
+                        <div class="form-field">
+
+                        <!--label and input elements-->
+                            <label for="txtPhrase">Phrase Value:</label>
+                            <input id="txtPhrase" class="input" name="txtPhrase">
+
+                        </div>
+
+                        <div class="form-field">
+
+                        <!--button to submit results for results card-->
+                            <button class="btn btn-primary full-width" id="btnCheckPhrase" onclick="phraseCheck()">Check Phrase</button>
+                        </div>
+                            
+                    </div>
+                </div>
+            </div>
+
+            <br>
+
+        <!--anchor back to class landing page-->
+            <p>
+                <a href="https://tierregreen.github.io/web-330/">Return</a>
+            </p>
+
+            <br>
+
+        <!--card div for palindrome results-->
+            <div class="card">
+
+            <!--card-title div-->
+                <div class="card-title">
+                    Palindrome Results
+                </div>
+
+            <!--div for results-->
+                <div class="card-content" id="assign-results"></div>
+
+            <!--assigned results div for string value articulating if the word is a palindrome or not.-->
+                <div id="assign-results-header" class="assign-results-text"></div>
+            </div>
+
+            <script src="Green-palindrome.js"></script>
+        </div>
+    </body>
+</html>
