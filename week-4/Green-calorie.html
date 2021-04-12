@@ -1,0 +1,162 @@
+<!--
+==============================================
+; Title: Assignment 4.2 Calorie app
+; Author: Professor Richard Krasso
+; Modified by: Tierre Green
+; Date: April 10, 2021
+; Description: web-330 Landing page linking all assignments and projects
+==============================================
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+        <meta charset="UTF-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--Title per course requirements-->
+        <title>WEB 330 - Enterprise Javascript II</title>
+
+    <!--theme.css stylesheet-->    
+        <link rel="stylesheet" href="../theme.css">
+    
+    <!--site.css stylesheet per course requirements-->
+        <link rel="stylesheet" href="../site.css">
+
+    <!--assignment specific stylesheet-->
+        <link rel="stylesheet" href="Green-calorie.css">
+
+
+    <!--google fonts and icon stylesheets-->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    </head>
+
+<!--light them per course requirements-->
+    <body class="light-theme">
+
+    <!--container div per courser requirement-->
+        <div id="container">
+
+        <!--app header div per courser reqs.-->
+            <div class="app-header">Welcome to the Calorie App!</div>
+
+            <div class="assign-content">
+
+                <div class="card">
+
+                    <div class="card-title">Calorie Search Form</div>
+
+                        <div class="form">
+
+                            <div class="form-field">
+                                <label for="txtFoodItem">Enter a food item: </label>
+                                <input id="txtFoodItem" class="input" type="text">
+                           
+                                <span id="foodList">(Ex: Egg, Apple, Hamburger, Fries, Banana, Soda)</span>
+                            </div>
+
+                            <div class="form-field">
+                                <button class="btn btn-primary full-width" id="btnSearch" >Search</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            <!-- Retune to landing page per course requirements-->
+                <p>
+                    <a class="return-home" href="../index.html">Return</a>
+                    
+                </p>
+            </div>
+            
+            <div class="assign-content">
+                <div class="card">
+                    <div class="card-title">Search Results</div>
+
+                    <div class="card-content">
+
+                        <table>
+                            <thead>
+                                <th>Name</th>
+                                <th>Calories</th>
+                            </thead>
+                            <tbody id="resultsTable">
+                    
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <script type="application/javascript" src="../theme.js"></script>
+
+        <script type="module">
+
+        // Import CalorieConverter class.
+            import { CalorieConverter } from "./calorie-converter.js";
+
+        // Binding txtFoodItem to FoodItem
+            let txtFoodItemEl = document.getElementById("txtFoodItem");
+
+            // Register onclick function at the btnSearch button.
+            document.getElementById("btnSearch").onclick = function() {
+
+            // Declare inputted value as txtFoodItem variable.
+                let txtFoodItem = txtFoodItemEl.value;
+
+            // set foods calorieConverter variable. 
+                let foods = CalorieConverter.find(txtFoodItem)
+
+                // table data
+                let tableData = '';
+
+            // For...of for user input.
+                for (let food of foods) {
+                    let tableRow = `
+                    <tr>
+                        <td>${food.name}</td>
+                        <td>${food.calories}</td>
+                    </tr>`
+                    tableData += tableRow;
+                }
+
+            // data tags for closing element.
+                tableData += "</tbody></table>";
+
+                document.getElementById("resultsTable").innerHTML = tableData;
+                
+            }
+
+        // This eventListener to allow enter button for results
+            document.addEventListener("keyup", function(event) {
+
+                if (event.key == "Enter") {
+                    document.getElementById("btnSearch").click();
+                }
+            });
+
+            let foodList = CalorieConverter.data;
+
+            let foodListData = "<i>(Ex: ";
+            
+            // Food that  si listed wit
+            for (let food of foodList) {
+                foodListData += `${food.name}, `;
+            }
+
+            foodListData = `${foodListData.slice(0,-2)})</i>`;
+
+        // Binding foodList to foodListData results.
+            document.getElementById("foodList").innerHTML = foodListData;
+
+        </script>
+
+    </body>
+</html>

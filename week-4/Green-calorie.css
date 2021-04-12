@@ -1,0 +1,62 @@
+/*
+=====================================================
+; Title: Assignment 4.2
+; Author: Professor Krasso
+; Modified By: Tierre
+; Date: April 11, 2021
+; Description: calorie.css for assignment 4.2
+=====================================================
+*/
+
+#foodList {
+    float: right;
+    color: #df546a;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+/**
+* all card stylings including card content and card hovering styling
+*/
+.card {
+    background-color: var(--card-background-color);
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);
+    transition: .3s;
+    width: 50%;
+    margin: auto auto;
+}
+
+.menu-cards {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    padding: 5px 5px;
+    grid-gap: 5px 5px;
+}
+
+.card-items {
+    background-color: var(--card-background-color);
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);
+    transition: .3s;
+    width: 95%;
+    height: 100%;
+    margin: auto auto;
+}
+
+.card-title {
+    text-align: center;
+    font-size: 2em;
+    color: var(--card-title-color);
+    font-weight: 400;
+}
+
+.card-content {
+    padding: 2px 16px;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,.2);
+}
+
+.return-home {
+    margin-right: 25%;
+}

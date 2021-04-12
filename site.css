@@ -18,6 +18,7 @@ body {
 /** container stylings*/
 #container {
     margin: 50px 100px 100px;
+    padding: 10px;
 }
 
 /**
