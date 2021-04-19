@@ -31,7 +31,7 @@ export class CalorieConverter {
     static find(name) {
 
     //return string called through static function
-        return this.data.filter(data => FoodModel.name.toLowerCase().includes(name));
+        return this.data.filter(data => foodModel.name.toLowerCase().includes(name));
     }
 }
 

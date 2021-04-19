@@ -1,0 +1,162 @@
+<!--
+==============================================
+; Title: Assignment 5.2 Calorie app
+; Author: Professor Richard Krasso
+; Modified by: Tierre Green
+; Date: April 17, 2021
+; Description: Bob's Auto Repair shop.
+==============================================
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+        <meta charset="UTF-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--Title per course requirements-->
+        <title>WEB 330 - Enterprise Javascript II</title>
+
+    <!--theme.css stylesheet-->    
+        <link rel="stylesheet" href="../theme.css">
+    
+    <!--site.css stylesheet per course requirements-->
+        <link rel="stylesheet" href="../site.css">
+
+    <!--assignment specific stylesheet-->
+        <link rel="stylesheet" href="Green-bobs-auto-repair.css">
+
+
+    <!--google fonts and icon stylesheets-->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    </head>
+
+<!--setting light class for body-->
+    <body class="light-theme">
+        
+    <!--class container div per course instructions-->
+        <div class="container">
+
+        <!--app-header class per course requirements-->
+            <h1 class="app-header">Welcome to Bob's Automotive Repair Shop!</h1>
+
+        <!--card class div for product listing card-->
+            <div class="card">
+
+                <div class="card-title">
+                    Product Listing
+                </div>
+
+            <!--cart icon and show cart onlick element.-->
+                <cart-component></cart-component>
+
+                <div class="card-content">
+
+                   <div class="form">
+
+                        <div class="form-field">
+
+                            <label for="products">
+                                Choose a product:
+                            </label>
+                            <select name="products" id="productList" class="drop-down-menu">
+
+                                <option value="Select">--Select--</option>
+                                <option value="19.99">Oil Change</option>
+                                <option value="18.44">Filter Replacement</option>
+                                <option value="9.99">Wiper Fluid Refill</option>
+
+                            </select>
+
+                            <i id="cart-message">To view your shopping cart click on the cart icon</i>
+
+                            <div class="form-field">
+
+                                <button class="btn btn-primary full-width" id="btnAddProduct" >Add to Cart</button>
+                            </div>
+
+                            <br />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p>
+
+                <a class="return-home" href="../index.html">Return</a>
+
+            </p>
+
+            <div class="card">
+
+                <div class="card-title">
+                    Shopping Cart
+                </div>
+
+                <div class="card-content">
+
+                    <table id="shopping-cart">
+                        
+                    </table>
+                </div>
+            </div>
+
+        <!--js file for theme and module of other js files-->
+            <script type="application/javascript" src="../theme.js"></script>
+            <script type="module">
+
+        //Importing classes from the index.js file.
+             import { Product, CartComponent, ShoppingCart } from "./index.js";
+                
+
+            //shopping cart object
+                let shoppingCart = new ShoppingCart();
+                
+                setCartCount();
+
+            //Creating onclick event.
+                document.getElementById("btnAddProduct").onclick = function() {
+
+                //creating product variables.
+                    let productList = document.getElementById("productList");
+                    let product = productList.options[productList.selectedIndex].text;
+                    let productValue = productList.options[productList.selectedIndex].value;
+
+                //If-else statement to add products.
+                    if (product != "--Select--") {
+                        shoppingCart.addProduct(product, productValue);
+                        setCartCount();
+                        alert(`${product} was added to your shopping cart!`);
+                    }
+                }
+
+                document.getElementById("cartIcon").onclick = function() {
+
+                    let cartDisplayTable =
+                    `<th>ID</th>
+                    <th>Name</th>
+                    <th>Price</th>`;
+                    
+                        shoppingCart.myIterator();
+                        
+                    
+
+                    document.getElementById('shoppingCart').innerHTML = cartDisplayTable;
+                }
+
+
+            //function adds number of items in the Cart. 
+                function setCartCount() 
+                {
+                    document.getElementById('cart-count').innerHTML = shoppingCart.count();
+                }
+            </script>
+        </div>
+
+    </body>

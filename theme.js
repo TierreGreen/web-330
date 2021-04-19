@@ -54,6 +54,9 @@ function toggleMode(x) {
         document.getElementById("icon-mode").classList.add("fa-toggle-off");
         document.getElementById("icon-text").innerHTML = "Light Mode"
 
+        localStorage.setItem("colorTheme", "light-theme")
+        localStorage.setItem("iconText", "Light Mode")
+        localStorage.setItem("iconMode", "fa-toggle-on")
         
     } else {
 
@@ -64,6 +67,10 @@ function toggleMode(x) {
         document.getElementById("icon-mode").classList.remove("fa-toggle-off");
         document.getElementById("icon-mode").classList.add("fa-toggle-on");
         document.getElementById("icon-text").innerHTML = "Dark Mode"
+
+        localStorage.setItem("colorTheme", "dark-theme")
+        localStorage.setItem("iconText", "Dark Mode")
+        localStorage.setItem("iconMode", "fa-toggle-on")
 
     }
 }

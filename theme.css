@@ -195,7 +195,7 @@ h2, h3, h4 {
 /**
 *tables and table header styling for the results.
 */
-.table {
+table {
 
     border-collapse: collapse;
     margin-bottom: 30px;
@@ -203,18 +203,18 @@ h2, h3, h4 {
 
 }
 
-.table th {
+table th {
     background-color: var(--table-header-background-color);
     color: var(--table-header-color);
 }
 
-.table td, th {
+table td, th {
     border: var(--table-border-color);
     padding: 8px;
     
 }
 
-.tr:hover {
+tr:hover {
     background-color: var(--table-hover-background-color);
     color: var(--table-hover-color);
     cursor: pointer;
