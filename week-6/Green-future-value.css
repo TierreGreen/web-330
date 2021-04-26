@@ -1,0 +1,28 @@
+.danger {
+    float: right;
+    color: #df546a;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.form-label {
+    display: inline-block;
+    padding-top: 1rem;
+}
+
+.form-field {
+    display:inline-block;
+    width: 100%;
+}
+
+a {
+    margin-left: 27%;
+}
+
+.input {
+    display: inline-block;
+}
+
+.app-header {
+    background-color: none;
+}
