@@ -20,8 +20,8 @@ export class FloatMinField {
 
     validate() {
 
-        let value = parseFloat(this.field);
-        return (value < this.min);
+        let floatField = parseFloat(this.field);
+        return floatField > this.min;
 
     }
 

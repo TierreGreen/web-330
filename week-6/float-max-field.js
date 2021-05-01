@@ -8,6 +8,8 @@
  * ========================================================
  */
 
+import { FloatField } from "./float-field";
+
 //FloatMaxField class to be exported
 export class FloatMaxField {
 
@@ -20,8 +22,8 @@ export class FloatMaxField {
 
     validate() {
 
-        let value = parseFloat(this.field);
-        return (value > this.max);
+        let floatField = parseFloat(this.field);
+        return floatField < this.max;
 
     }
 

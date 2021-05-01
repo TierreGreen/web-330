@@ -18,14 +18,7 @@ export class FloatField {
     }
 
     validate(name) {
-        if (number.isNaN(number.parseFloat(name))) {
-
-            return true
-
-        } else {
-            
-            return false
-        }
+        return !isNan(parseFloat(this.field));
     }
 
     getMessage() {

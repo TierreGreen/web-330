@@ -11,12 +11,12 @@
 //Finance calculator class to be exported
 export class FinanceCalculator {
     static Months_IN_YEAR = 12
-    static calculatorFutureValue(monthlyPayment, rate, years) {
+    static calculateFutureValue(monthlyPayment, rate, years) {
 
-        let month = years / FinanceCalculator.Months_IN_YEAR;
-        let interestRate = 1 + rate / 100;
-        let presentValue = monthlyPayment * month;
-        let futureValue = presentValue * (Math.pow(interestRate, month));
+        const month = years * this.Months_IN_YEAR;
+        const interestRate = (1 + rate / 100);
+        const presentValue = monthlyPayment * months;
+        const futureValue = presentValue * (Math.pow(interestRate, months));
 
         return futureValue.toFixed(2);
     }
