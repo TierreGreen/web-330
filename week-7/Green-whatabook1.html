@@ -1,3 +1,12 @@
+<!--
+; Title: Green-whatabook1.html
+; Author: Professor Richard Krasso
+; Modified by: Tierre Green
+; Date: May 2, 2021
+; Description: Green-WhatABook1
+-->
+
+
 <!DOCTYPE html>
 
 <html lang="en -US">
@@ -16,8 +25,6 @@
     <!--site.css stylesheet per assignment requirements-->
         <link href="../site.css" rel="stylesheet">
 
-    <!--flex-layout stylesheet for grid layout-->
-        <link rel="stylesheet" href="../flex-layout.css">
 
     <!--google fonts, gstatic fonts, cdn icons style sheets -->
         <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -28,13 +35,11 @@
 
    <body class="light-theme">
 
-        <h1 class="app-header">
-            Welcome to the WhatABook, Part 1 App!
-        </h1>
-
         <div class="container">
 
-            <div class="assign-container">
+            <div class="app-header">
+                Welcome to the WhatABook, Part 1 App!
+            </div>
 
                 <div class="assign-content">
 
@@ -45,38 +50,159 @@
                         </div>
 
                         <div class="card-content" id="bookList">
-
-                            <table></table>
-
                         </div>
 
                     </div>
 
-                </div>
-            </div>
-
-        <!--anchor back to class landing page-->
-            <p>
-                <a href="https://tierregreen.github.io/web-330/">Return</a>
-            </p>
-
-            <div class="assign-container">
-
-                <div class="assign-content">
-
+                <!--anchor back to class landing page-->
+                    <p>
+                        <a href="https://tierregreen.github.io/web-330/">Return</a>
+                    </p>
+        
                     <div class="card">
 
                         <div class="card-title">
                             Selected Book
                         </div>
 
-                        <div class="card-content" id="selectedBook"></div>
+                    
+                    <!--selected book card-->
+                        <div class="card-content" id="selectedBook">
+                        </div>
                     </div>
 
                 </div>
-
-            </div>
+            
 
         </div>
+
+        <script type="application/javascript" src="../theme.js"></script>
+
+        <script>
+
+        //query dom for content to parse.
+            window.addEventListener('DOMContentLoaded', function(event) {
+
+            //console log of dom to be loaded and parsed
+                console.log('DOM loaded and parsed');
+
+            //declare filename variable with books file as location.
+                let fileName = 'books.xml';
+
+            //get xml file
+                fetch(fileName)
+                .then(res => res.text())
+                .then(data => {
+                    
+                    let domParser = new DOMParser();
+                    let xmlBooks = domParser.parseFromString(data, "text/xml")
+
+                    loadBooks(xmlBooks);
+
+                //click event for isbns
+                    addISBNClickEvents();
+                })
+            });
+
+        //load books function to load book within books xml tag.
+            function loadBooks(xml) {
+
+            // Declare books variable by pulling book from books in XML file.
+                let books = xml.getElementsByTagName("book");
+
+            //create table header
+                let tableData = `
+                <table  id='bookTable' class='table'>
+                    <thead>
+                        <th>ISBN</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Pages</th>
+                        <th>Authors</th>
+                    </thead>
+                    <tbody>`;
+                
+            //for of loop what will return the xml data into the html page.
+                for (let book of books) {
+
+                    let isbn = book.getElementsByTagName("isbn")[0].childNodes[0].nodeValue;
+
+                    let title = book.getElementsByTagName("title")[0].childNodes[0].nodeValue;
+
+                    let description = book.getElementsByTagName("description")[0].childNodes[0].nodeValue;
+
+                    let pages = book.getElementsByTagName("pages")[0].childNodes[0].nodeValue;
+
+                    let authors = book.getElementsByTagName("authors")[0].childNodes[0].nodeValue;
+
+                //table data for each row to populate
+                    tableData += `
+                    <tr>
+                        <td data-value="ISBN">
+                            <a href="#" class="isbn-link">${isbn}</a>
+                        </td>
+                        <td data-value="Title">
+                            ${title}
+                        </td>
+                        <td data-value="Description">
+                            ${description}
+                        </td>
+                        <td data-value="Pages">
+                            ${pages}
+                        </td>
+                        <td data-value="Authors">
+                            ${authors}
+                        </td>
+                    </td>
+                            `
+                }
+                
+            //ends the table
+                tableData += `</tbody></table>`;
+
+            //binds table data to the bookList div.
+                document.getElementById('bookList').innerHTML = tableData;
+
+            //using console log to show if loaded properly
+                console.log('Books loaded.')
+            }
+
+        //click function for when you select a specific isbn
+            function anchorClicked(e) {
+
+                e.preventDefault();
+
+                let self = this;
+                let cell = self.parentElement;
+                let row = cell.parentElement;
+
+                let data = row.querySelectorAll("td");
+                console.log("this" + data);
+
+                let bookData = `<ul style="list-style-type: none;">`;
+
+                for (let field of data) {
+                    bookData += `<li><b>${field.dataset.value}</b>: ${field.innerHTML}</li>`; // Grabs field title and HTML text within the field.
+                }
+                
+            //binding data for selected book to book div. 
+                document.getElementById('selectedBook').innerHTML = bookData;
+            }
+
+        //adds click events for the
+
+            function addISBNClickEvents() {
+                
+                let viewButtons = document.querySelectorAll("#bookTable tbody .isbn-link");
+                
+                for (let index = 0; index < viewButtons.length; index++) {
+                    viewButtons[index].addEventListener("click", anchorClicked);
+                }
+
+            }
+
+
+        </script>
+
    </body>
 </html>

@@ -33,7 +33,7 @@ function setDefaultTheme() {
     const iconMode = localStorage.getItem("iconMode") || "fa-toggle-off";
     const iconText = localStorage.getItem("iconText") || "Light Mode";
 
-    // saves modes and thems in browser storage.
+    // saves modes and theme in browser storage.
     document.body.classList.value = theme;
     document.getElementById("icon-mode").classList.add(iconMode);
     document.getElementById("icon-text").innerHTML = iconText;
