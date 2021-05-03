@@ -182,8 +182,7 @@
                 let bookData = `<ul style="list-style-type: none;">`;
 
                 for (let field of data) {
-                    bookData += `<li><b>${field.dataset.value}</b>: ${field.innerHTML}</li>`; // Grabs field title and HTML text within the field.
-                }
+                    bookData += `<li><b>${field.dataset.value}</b>: ${field.innerHTML}</li>`;
                 
             //binding data for selected book to book div. 
                 document.getElementById('selectedBook').innerHTML = bookData;
@@ -200,8 +199,6 @@
                 }
 
             }
-
-
         </script>
 
    </body>
