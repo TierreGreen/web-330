@@ -106,7 +106,7 @@
 
         //calling http function for url library for books.
             http.get("https://openlibrary.org/api/books", params).then(res => {
-                constole.log(res);
+                console.log(res);
 
                 document.getElementById("bookListing").innerHTML =  buildHtmlString(res, "table");
                 bookDetails = res;

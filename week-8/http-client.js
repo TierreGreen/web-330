@@ -3,7 +3,7 @@
  * Author: Professor Richard Krasso
  * Modified by: Tierre Green
  * Date: May 9, 2021
- * description: HTTPCLient class export
+ * description: HTTPClient class export
  */
 
 
@@ -15,7 +15,7 @@ export class HttpClient {
         let paramsObject = new URLSearchParams(params);
         urlObject.search = paramsObject
 
-        const res = await fetch(urlObjerct.toString(), {
+        const res = await fetch(urlObject.toString(), {
             method: "GET",
         });
 
