@@ -118,7 +118,7 @@
 
             function addIsbnClickEvents() {
                 let links = document.getElementsByClassName("isbn-link");
-                ArraY.from(links).forEach(element => {
+                Array.from(links).forEach(element => {
                     element.addEventListener("click", getBook);
                 });
             }
