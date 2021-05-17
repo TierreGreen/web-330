@@ -233,7 +233,7 @@
             }
             if (monthlyPaymentValidator.validate() && rateValidator.validate()){
                 errorLogEl.innerHTML = "";
-                let futureValue = FinanceCalculator.calculateFutureValue(parseFloat(monthlyPayment), parseFloat(rate), parseInt(years));
+                let futureValue = FinanceCalculator.calculatorFutureValue(parseFloat(monthlyPayment), parseFloat(rate), parseInt(years));
                 let formattedMoney = FinanceCalculator.convertToCurrency(futureValue);
                 document.getElementById("futureValue").innerHTML = "The future value is " + formattedMoney;
             }
